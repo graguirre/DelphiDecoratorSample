@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A2EF9040-5FBE-4FE3-BB4D-787E7471B3BF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CifradoDatos.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pruebaCifradoDatos.dproj">
+            <Dependencies>CifradoDatos.dproj</Dependencies>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CifradoDatos">
+        <MSBuild Projects="CifradoDatos.dproj"/>
+    </Target>
+    <Target Name="CifradoDatos:Clean">
+        <MSBuild Projects="CifradoDatos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CifradoDatos:Make">
+        <MSBuild Projects="CifradoDatos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pruebaCifradoDatos" DependsOnTargets="CifradoDatos">
+        <MSBuild Projects="pruebaCifradoDatos.dproj"/>
+    </Target>
+    <Target Name="pruebaCifradoDatos:Clean" DependsOnTargets="CifradoDatos:Clean">
+        <MSBuild Projects="pruebaCifradoDatos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pruebaCifradoDatos:Make" DependsOnTargets="CifradoDatos:Make">
+        <MSBuild Projects="pruebaCifradoDatos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CifradoDatos;pruebaCifradoDatos"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CifradoDatos:Clean;pruebaCifradoDatos:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CifradoDatos:Make;pruebaCifradoDatos:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
