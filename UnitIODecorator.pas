@@ -9,7 +9,7 @@ uses
 
 type
 
-TIODecorator = class(TInterfacedObject, IIO) // IO decorator
+TIODecorator = class abstract(TInterfacedObject, IIO) // IO decorator
     procedure WriteString(pValue : String); virtual; abstract;
     function ReadString: String; virtual; abstract;
 end;
@@ -36,6 +36,7 @@ uses
 
 constructor TIOCrypto.Create(TObject: IIO);
 begin
+  inherited Create;
   FCrypto := ServiceLocator.GetService<ICrypto>('CryptoAES');
   FIO := TObject;
 end;
@@ -55,5 +56,9 @@ procedure TIOCrypto.WriteString(pValue: String);
 begin
   FIO.WriteString(FCrypto.Crypt(pValue));
 end;
+
+initialization
+  GlobalContainer.RegisterType<TIOCrypto>.Implements<IIO>('IOCrypto').InjectConstructor(['IOFile']);
+  GlobalContainer.Build;
 
 end.

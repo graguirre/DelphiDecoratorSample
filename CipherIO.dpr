@@ -22,10 +22,11 @@ begin
 
     FIO.WriteString(SecretWord);
     Writeln(FIO.ReadString);
-    Writeln('Check data.txt file in a file editor. Testing IO interface. Press any key to continue.')
+    Writeln('Check data.txt file in a file editor. Testing IO interface. Press any key to continue.');
     readln;
 
-    FIO := TIOCrypto.Create(FIO);  // decorate IO
+    FIO := ServiceLocator.GetService<IIO>('IOCrypto');   // decorate IO
+
     FIO.WriteString(SecretWord);
     Writeln(FIO.ReadString); // check data.txt file
     Writeln('Check data.txt file in a file editor. Testing decorated IO interface.')
