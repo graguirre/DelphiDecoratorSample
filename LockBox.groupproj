@@ -1,13 +1,16 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{A2EF9040-5FBE-4FE3-BB4D-787E7471B3BF}</ProjectGuid>
+        <ProjectGuid>{51F268EF-3C2B-4328-AA54-5D65D42EE8CC}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="CifradoDatos.dproj">
+        <Projects Include="CipherIO.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="pruebaCifradoDatos.dproj">
-            <Dependencies>CifradoDatos.dproj</Dependencies>
+        <Projects Include="PackageCrypto.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PackageIO.dproj">
+            <Dependencies/>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -17,32 +20,41 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="CifradoDatos">
-        <MSBuild Projects="CifradoDatos.dproj"/>
+    <Target Name="CipherIO">
+        <MSBuild Projects="CipherIO.dproj"/>
     </Target>
-    <Target Name="CifradoDatos:Clean">
-        <MSBuild Projects="CifradoDatos.dproj" Targets="Clean"/>
+    <Target Name="CipherIO:Clean">
+        <MSBuild Projects="CipherIO.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="CifradoDatos:Make">
-        <MSBuild Projects="CifradoDatos.dproj" Targets="Make"/>
+    <Target Name="CipherIO:Make">
+        <MSBuild Projects="CipherIO.dproj" Targets="Make"/>
     </Target>
-    <Target Name="pruebaCifradoDatos" DependsOnTargets="CifradoDatos">
-        <MSBuild Projects="pruebaCifradoDatos.dproj"/>
+    <Target Name="PackageCrypto">
+        <MSBuild Projects="PackageCrypto.dproj"/>
     </Target>
-    <Target Name="pruebaCifradoDatos:Clean" DependsOnTargets="CifradoDatos:Clean">
-        <MSBuild Projects="pruebaCifradoDatos.dproj" Targets="Clean"/>
+    <Target Name="PackageCrypto:Clean">
+        <MSBuild Projects="PackageCrypto.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="pruebaCifradoDatos:Make" DependsOnTargets="CifradoDatos:Make">
-        <MSBuild Projects="pruebaCifradoDatos.dproj" Targets="Make"/>
+    <Target Name="PackageCrypto:Make">
+        <MSBuild Projects="PackageCrypto.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PackageIO">
+        <MSBuild Projects="PackageIO.dproj"/>
+    </Target>
+    <Target Name="PackageIO:Clean">
+        <MSBuild Projects="PackageIO.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PackageIO:Make">
+        <MSBuild Projects="PackageIO.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="CifradoDatos;pruebaCifradoDatos"/>
+        <CallTarget Targets="CipherIO;PackageCrypto;PackageIO"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="CifradoDatos:Clean;pruebaCifradoDatos:Clean"/>
+        <CallTarget Targets="CipherIO:Clean;PackageCrypto:Clean;PackageIO:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="CifradoDatos:Make;pruebaCifradoDatos:Make"/>
+        <CallTarget Targets="CipherIO:Make;PackageCrypto:Make;PackageIO:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
