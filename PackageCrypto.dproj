@@ -119,6 +119,7 @@
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="Spring.Core.dcp"/>
         <DCCReference Include="LockBoxDR.dcp"/>
+        <DCCReference Include="LockBox3DR.dcp"/>
         <DCCReference Include="InterfaceCrypto.pas"/>
         <DCCReference Include="UnitCrypto.pas"/>
         <DCCReference Include="UnitCrypto3.pas"/>

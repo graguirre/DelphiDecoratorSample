@@ -7,13 +7,13 @@
             <Dependencies/>
         </Projects>
         <Projects Include="PackageCrypto.dproj">
-            <Dependencies/>
+            <Dependencies>PackageIO.dproj</Dependencies>
         </Projects>
         <Projects Include="CipherIO.dproj">
-            <Dependencies/>
+            <Dependencies>PackageCrypto.dproj</Dependencies>
         </Projects>
         <Projects Include="CipherComp.dproj">
-            <Dependencies/>
+            <Dependencies>PackageCrypto.dproj</Dependencies>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -32,31 +32,31 @@
     <Target Name="PackageIO:Make">
         <MSBuild Projects="PackageIO.dproj" Targets="Make"/>
     </Target>
-    <Target Name="PackageCrypto">
+    <Target Name="PackageCrypto" DependsOnTargets="PackageIO">
         <MSBuild Projects="PackageCrypto.dproj"/>
     </Target>
-    <Target Name="PackageCrypto:Clean">
+    <Target Name="PackageCrypto:Clean" DependsOnTargets="PackageIO:Clean">
         <MSBuild Projects="PackageCrypto.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="PackageCrypto:Make">
+    <Target Name="PackageCrypto:Make" DependsOnTargets="PackageIO:Make">
         <MSBuild Projects="PackageCrypto.dproj" Targets="Make"/>
     </Target>
-    <Target Name="CipherIO">
+    <Target Name="CipherIO" DependsOnTargets="PackageCrypto">
         <MSBuild Projects="CipherIO.dproj"/>
     </Target>
-    <Target Name="CipherIO:Clean">
+    <Target Name="CipherIO:Clean" DependsOnTargets="PackageCrypto:Clean">
         <MSBuild Projects="CipherIO.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="CipherIO:Make">
+    <Target Name="CipherIO:Make" DependsOnTargets="PackageCrypto:Make">
         <MSBuild Projects="CipherIO.dproj" Targets="Make"/>
     </Target>
-    <Target Name="CipherComp">
+    <Target Name="CipherComp" DependsOnTargets="PackageCrypto">
         <MSBuild Projects="CipherComp.dproj"/>
     </Target>
-    <Target Name="CipherComp:Clean">
+    <Target Name="CipherComp:Clean" DependsOnTargets="PackageCrypto:Clean">
         <MSBuild Projects="CipherComp.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="CipherComp:Make">
+    <Target Name="CipherComp:Make" DependsOnTargets="PackageCrypto:Make">
         <MSBuild Projects="CipherComp.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">

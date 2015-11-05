@@ -31,7 +31,8 @@ package PackageCrypto;
 requires
   rtl,
   Spring.Core,
-  LockBoxDR;
+  LockBoxDR,
+  LockBox3DR;
 
 contains
   InterfaceCrypto in 'InterfaceCrypto.pas',

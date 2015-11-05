@@ -34,7 +34,7 @@ type
 implementation
 
 uses
-  Classes,
+  Classes, // TEncoding
   SysUtils,
   Spring.Container,
   uTPLb_CryptographicLibrary,
