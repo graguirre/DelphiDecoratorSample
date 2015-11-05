@@ -70,7 +70,8 @@ end;
 
 destructor TCrypto3BF.Destroy;
 begin
-
+  FCodec.Free;
+  FCryptoLib.Free;
   inherited;
 end;
 
@@ -103,7 +104,8 @@ end;
 
 destructor TCrypto3AES.Destroy;
 begin
-
+  FCodec.Free;
+  FCryptoLib.Free;
   inherited;
 end;
 

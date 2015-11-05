@@ -21,8 +21,8 @@ begin
   FEncAES := ServiceLocator.GetService<ICrypto>('CryptoAES');
   FEnc3AES := ServiceLocator.GetService<ICrypto>('Crypto3AES');
   try
-    writeln(SecretWord + ' ' + FEncAES.Crypt(SecretWord));
-    writeln(SecretWord + ' ' + FEnc3AES.Crypt(SecretWord));
+    writeln(SecretWord + ' ' + FEncAES.Decrypt( FEncAES.Crypt(SecretWord) ));
+    writeln(SecretWord + ' ' + FEnc3AES.Decrypt( FEnc3AES.Crypt(SecretWord) ));
   except
     on E: Exception do
       Writeln(E.ClassName, ': ', E.Message);
