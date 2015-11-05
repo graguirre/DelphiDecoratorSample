@@ -121,6 +121,7 @@
         <DCCReference Include="LockBoxDR.dcp"/>
         <DCCReference Include="InterfaceCrypto.pas"/>
         <DCCReference Include="UnitCrypto.pas"/>
+        <DCCReference Include="UnitCrypto3.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

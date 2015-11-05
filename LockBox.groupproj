@@ -3,13 +3,16 @@
         <ProjectGuid>{51F268EF-3C2B-4328-AA54-5D65D42EE8CC}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="CipherIO.dproj">
+        <Projects Include="PackageIO.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="PackageCrypto.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="PackageIO.dproj">
+        <Projects Include="CipherIO.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CipherComp.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -20,14 +23,14 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="CipherIO">
-        <MSBuild Projects="CipherIO.dproj"/>
+    <Target Name="PackageIO">
+        <MSBuild Projects="PackageIO.dproj"/>
     </Target>
-    <Target Name="CipherIO:Clean">
-        <MSBuild Projects="CipherIO.dproj" Targets="Clean"/>
+    <Target Name="PackageIO:Clean">
+        <MSBuild Projects="PackageIO.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="CipherIO:Make">
-        <MSBuild Projects="CipherIO.dproj" Targets="Make"/>
+    <Target Name="PackageIO:Make">
+        <MSBuild Projects="PackageIO.dproj" Targets="Make"/>
     </Target>
     <Target Name="PackageCrypto">
         <MSBuild Projects="PackageCrypto.dproj"/>
@@ -38,23 +41,32 @@
     <Target Name="PackageCrypto:Make">
         <MSBuild Projects="PackageCrypto.dproj" Targets="Make"/>
     </Target>
-    <Target Name="PackageIO">
-        <MSBuild Projects="PackageIO.dproj"/>
+    <Target Name="CipherIO">
+        <MSBuild Projects="CipherIO.dproj"/>
     </Target>
-    <Target Name="PackageIO:Clean">
-        <MSBuild Projects="PackageIO.dproj" Targets="Clean"/>
+    <Target Name="CipherIO:Clean">
+        <MSBuild Projects="CipherIO.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="PackageIO:Make">
-        <MSBuild Projects="PackageIO.dproj" Targets="Make"/>
+    <Target Name="CipherIO:Make">
+        <MSBuild Projects="CipherIO.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CipherComp">
+        <MSBuild Projects="CipherComp.dproj"/>
+    </Target>
+    <Target Name="CipherComp:Clean">
+        <MSBuild Projects="CipherComp.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CipherComp:Make">
+        <MSBuild Projects="CipherComp.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="CipherIO;PackageCrypto;PackageIO"/>
+        <CallTarget Targets="PackageIO;PackageCrypto;CipherIO;CipherComp"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="CipherIO:Clean;PackageCrypto:Clean;PackageIO:Clean"/>
+        <CallTarget Targets="PackageIO:Clean;PackageCrypto:Clean;CipherIO:Clean;CipherComp:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="CipherIO:Make;PackageCrypto:Make;PackageIO:Make"/>
+        <CallTarget Targets="PackageIO:Make;PackageCrypto:Make;CipherIO:Make;CipherComp:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

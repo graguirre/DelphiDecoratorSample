@@ -35,7 +35,8 @@ requires
 
 contains
   InterfaceCrypto in 'InterfaceCrypto.pas',
-  UnitCrypto in 'UnitCrypto.pas';
+  UnitCrypto in 'UnitCrypto.pas',
+  UnitCrypto3 in 'UnitCrypto3.pas';
 
 end.
 
